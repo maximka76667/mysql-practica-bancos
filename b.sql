@@ -1,3 +1,6 @@
-select *
-from sucursales
-left join cuentas on sucursales.COD_SUCUR = cuentas.COD_SUCUR
+SELECT 
+    *
+FROM
+    sucursales
+        LEFT JOIN
+    cuentas ON sucursales.COD_SUCUR = cuentas.COD_SUCUR

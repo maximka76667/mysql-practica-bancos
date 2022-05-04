@@ -1,4 +1,8 @@
-select *
-from sucursales
-right join bancos on bancos.COD_BANCO = sucursales.COD_BANCO
-left join cuentas on cuentas.COD_BANCO = sucursales.COD_BANCO
+SELECT 
+    *
+FROM
+    sucursales
+        RIGHT JOIN
+    bancos ON bancos.COD_BANCO = sucursales.COD_BANCO
+        LEFT JOIN
+    cuentas ON cuentas.COD_BANCO = sucursales.COD_BANCO

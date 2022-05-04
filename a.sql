@@ -1,3 +1,6 @@
-select *
-from bancos
-left join sucursales on sucursales.COD_BANCO = bancos.COD_BANCO
+SELECT 
+    *
+FROM
+    bancos
+        LEFT JOIN
+    sucursales ON sucursales.COD_BANCO = bancos.COD_BANCO

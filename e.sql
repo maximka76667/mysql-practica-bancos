@@ -1,13 +1,22 @@
-/*select num_cta, tipo_mov, sum(importe)
-from movimientos
-where tipo_mov = "I"
-group by num_cta
-*/
-select num_cta, (a.importe - b.importe) as saldo
-from (
-	select num_cta, tipo_mov, sum(importe)
-	from movimientos
-	where tipo_mov = "I"
-	group by num_cta
-    ) a
-    
+SELECT 
+    cuentas.NUM_CTA,
+    SUM(CASE
+        WHEN tipo_mov = 'I' THEN importe
+        ELSE 0
+    END) AS I,
+    SUM(CASE
+        WHEN tipo_mov = 'R' THEN importe
+        ELSE 0
+    END) AS R,
+    SUM(CASE
+        WHEN tipo_mov = 'I' THEN importe
+        ELSE 0
+    END) - SUM(CASE
+        WHEN tipo_mov = 'R' THEN importe
+        ELSE 0
+    END) AS saldo
+FROM
+    cuentas
+        JOIN
+    movimientos ON cuentas.NUM_CTA = movimientos.NUM_CTA
+GROUP BY cuentas.NUM_CTA
